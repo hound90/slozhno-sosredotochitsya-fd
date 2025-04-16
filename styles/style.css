@@ -1,5 +1,469 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  background-image: var(--bg-image-dark, #000028);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr min-content 1fr;
+  height: max(100vh, 375px);
+  padding: 10px;
+}
+
+/* ------------------ REC с точкой и уголком------------------------*/
+/* ------------------ Верхний правый уголок------------------------*/
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  border-top: 1px solid  var( --corner-up-color,#ff0070);
+  border-right: 1px solid  var( --corner-up-color,#ff0070);
+}
+/* ------------------ Нижний левый уголок------------------------*/
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 25px;
+  height: 25px;
+  border-bottom: 1px solid  var(--corner-down-color,#ff0070);
+  border-left: 1px solid  var(--corner-down-color,#ff0070);
+}
+
+/* ------------------ REC с точкой------------------------*/
+
+.header_rec {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  color: var(--rec-color,#ff0070);
+  font-family: var(--font-family, sans-serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 139%;
+  text-align: center;
+  text-transform: lowercase;
+  text-transform: uppercase;
+  inset-block-start: 10px;
+  inset-inline-end: 10px;
+}
+
+.header_rec::after {
+  content: '';
+  display: block;
+  margin: 10px;
+  border-radius: 100%;
+  box-shadow: 0 0 4px 2px var(--point-shadow-color,#ff0070);
+  background-color: var(--point-color,#ff0070);
+  inline-size: 9px;
+  block-size: 9px;
+}
+
+/* ------------------ Меню навигации и состояния------------------------*/
+/* ------------------ Меню навигации------------------------*/
+
+.header__theme-menu {
+  justify-self: end;
+  padding-block-start: 63px;
+  color: var(--nav-menu-color,#ff0070);
+  font-family: var(--font-family, sans-serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  text-align: center;
+}
+
+.header__theme-menu-list {
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+}
+
+.header__theme-menu-button {
+  width: 70px;
+  border: 1px solid transparent;
+  padding: 2px 0px 5px 0px;
+  background-color: transparent;
+}
+
+/* ------------------ Состояние кнопок меню------------------------*/
+
+.header__theme-menu-button:hover {
+  border: 1px solid var(--nav-menu-alt-color,rgba(255, 0, 112, 0.4));
+}
+
+.header__theme-menu-button:focus {
+  border-bottom: 1px solid var(--nav-menu-activ-color,#ff0070);
+  outline: none;
+}
+
+/* ------------------ Выбранный стиль + активная кнопка------------------------*/
+
+.header__theme-menu-button_active {
+  border: 1px solid var(--nav-menu-activ-color,#ff0070);
+  pointer-events: none;
+}
+
+/* ------------------ Главный заголовок------------------------*/
+
+.title_no_focus {
+  align-self: center;
+  color: var(--title-color,#db00ff);
+  font-family: var(--font-family-bold, sans-serif);
+  font-weight: 700;
+  font-size:  clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 83%;
+  text-shadow: 4px 4px 0 var(--title-shadow-color,#ff0070);
+}
+
+.descriptions_no_focus {
+  align-self: center;
+  font-family: var(--font-family-bold, sans-serif);
+  font-weight: 700;
+  font-size: clamp(1.125rem, 1.125rem + 0vw, 1.125rem);
+  line-height: 130%;
+  white-space: pre-line;
+}
+
+.descriptions_title-decor {
+  color: var(--title-description-color,#000028);
+  background-color:  var(--title-description-bg-color,#ff0070);
+}
+
+/* ------------------ Общий контент стилей------------------------*/
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding-inline-start: 10px;
+  padding-inline-end: 10px;
+}
+
+.title {
+  color: var(--title-content-color, #ff0070);
+  font-family: var(--font-family-bold, sans-serif);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 130%;
+}
+
+.title_content {
+  margin-block-start: 20px;
+  margin-block-end: 10px;
+  color: var(--title-alt-content-color, #000028);
+  font-family: var(--font-family-bold, sans-serif);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 130%;
+  background-color:  var(--bg-content-color,#ff0070);
+}
+.title_content_goldfish {
+  margin-block-start: 20px;
+  margin-block-end: 10px;
+  color: var(--title-alt-content-color, #000028);
+  font-family: var(--font-family, sans-serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 130%;
+  background-color:  var(--bg-content-color,#ff0070);
+}
+
+.descriptions {
+  color: var(--description-content-color, #f1b2ce);
+  font-family: var(--font-family, sans-serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 130%;
+}
+
+/* ------------------ Почему сосредоточиться так сложно------------------------*/
+
+.section_why_hard {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr;
+  padding-block-start: 40px;
+}
+
+/* ------------------ Ссылка и состояния ------------------------*/
+.descriptions_why_hard_multitask_search_found_out {
+  text-decoration: none;
+  text-shadow: 2px 1px 0 var(--bg-link-content-color, #ff0070);
+}
+
+.descriptions_why_hard_multitask_search_found_out:hover {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.descriptions_why_hard_multitask_search_found_out:focus {
+  outline: 1px solid var(--link-outline-color, #f1b2ce);
+}
+/* ------------------ Конец ссылки------------------------*/
+
+
+.title_why_hard__dofamin {
+  color: var(--title-alt-content-color, #000028);
+  background-color:  var(--bg-content-color,#ff0070);
+}
+
+.descriptions_why_hard__dofamin {
+  color: var(--description-content-color, #f1b2ce);
+}
+
+/* ------------------ Что снижает концентрацию внимания?------------------------*/
+
+.section_what_decrease {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr;
+}
+/* ------------------ Как концентрироваться лучше, чем золотая рыбка (то есть дольше трёх секунд)------------------------*/
+
+.section_how_goldfish {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr;
+}
+
+.title_content_container {
+  margin-block-start: 20px;
+  margin-block-end: 10px;
+  color: var(--title-alt-content-color, #000028);
+  font-family: var(--font-family-bold, sans-serif);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 130%;
+  background-color:  var(--bg-content-color,#ff0070);
+}
+
+/* ------------------ Ссылка и состояния ------------------------*/
+
+.descriptions_how_goldfish_simple_advice_walk__show {
+  text-decoration: none;
+  text-shadow: 2px 1px 0 var(--bg-link-content-color, #ff0070);
+}
+
+.descriptions_how_goldfish_simple_advice_walk__show:hover {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.descriptions_how_goldfish_simple_advice_walk__show:focus {
+  outline: 1px solid var(--link-outline-color, #f1b2ce);
+}
+
+/* ------------------ Конец ссылки------------------------*/
+
+/* ------------------ А можно в картинках?------------------------*/
+.title_content.title_motion_images {
+  margin: 0 0 10px 0;
+}
+/* ------------------ Список картинок------------------------*/
+.container_motion_images {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.gallery_picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ------------------ Футер------------------------*/
+
+.footer {
+  margin-block-start: 40px;
+}
+
+.footer_title_focus {
+  padding-block-start: 286px;
+  padding-block-end: 285px;
+  color: var(--title-color,#db00ff);
+  font-family: var(--font-family-bold, sans-serif);
+  font-weight: 700;
+  font-size: 116px;
+  line-height: 83%;
+  text-align: center;
+  text-shadow: 2px 2px 0 var(--title-shadow-color,#ff0070);
+}
+
+/* --------------------------------------------------------------*/
+/* ------------------ Медиа запросы------------------------*/
+
+@media (width > 768px) {
+  
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr min-content 1fr;
+    padding: 0;
+  }
+
+  .header__theme-menu {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .title_no_focus {
+    grid-column: 1 / -1;
+    grid-row: 2 /3;
+    font-size: clamp(7.0rem, 0.0025rem + 1.4531vw, 0.8125rem) ;
+  }
+
+  .descriptions_no_focus {
+    grid-column: 2 / 3;
+    grid-row: 3;
+  }
+  
+
+/* ------------------ Почему сосредоточиться так сложно------------------------*/
+
+  .section_why_hard {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+  }
+
+  .title_why_hard {
+    grid-column: 1 / 2;
+  }
+  .container_why_hard {
+    grid-column: 2 / -1;
+  }
+
+  /* ------------------ Что снижает концентрацию внимания?------------------------*/
+  .section_what_decrease {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: min-content 1fr;
+    column-gap: 20px;
+  }
+
+  .title_what_decrease {
+    grid-column: 1 / 1;
+    grid-row: 1/1;
+  }
+  .container_what_decrease {
+    grid-column: 1 / 4;
+    grid-row: 2/4;
+  }
+  /* ------------------ Как концентрироваться лучше, чем золотая рыбка (то есть дольше трёх секунд)------------------------*/
+
+  .section_how_goldfish {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+  }
+  
+  .title_how_goldfish {
+    grid-column: 1 / 2;
+  }
+  .container_how_goldfish {
+    grid-column: 2 / -1;
+  }
+
+  .title_content_container {
+    margin-block-start: 0;
+  }
+  /* ------------------ А можно в картинках?------------------------*/
+  .container_motion_images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-auto-flow: dense;
+    gap: 20px;
+  }
+/* ------------------ Закат------------------------*/
+  .gallery_picture_image:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1/1;
+  }
+  /* ------------------ Мороженое------------------------*/
+  .gallery_picture_image:nth-child(2) {
+    grid-column: 3 / 4;
+    grid-row: 1/-2;
+  }
+  /* ------------------ Кассета------------------------*/
+  .gallery_picture_image:nth-child(3) {
+    grid-column: 1 / 2;
+    grid-row: 4/2;
+  }
+  /* ------------------ Книги------------------------*/
+  .gallery_picture_image:nth-child(4) {
+    
+  }
+  /* ------------------ Улица------------------------*/
+  .gallery_picture_image:nth-child(5) {
+    grid-column: -1 / -3;
+    grid-row: -2/-1;
+  }
+}
+
+@media (width > 1024px) {
+ 
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr min-content 1fr;
+    padding: 0;
+  }
+
+  .header__theme-menu {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    align-self: start;
+    padding: 0;
+  }
+  
+  .header__theme-menu-list {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .title_no_focus {
+    grid-column: 1 / -1;
+    grid-row: 2 /3;
+    font-size: clamp(7.5rem, 0.5625rem + 14.7vw, 9.8125rem);
+  }
+
+  .descriptions_no_focus {
+    grid-column: 2 / 3;
+    grid-row: 3;
+    margin-inline-end: 20px;
+  }
+  
+ /* ------------------ Что снижает концентрацию внимания?------------------------*/
+  .section_what_decrease {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows:  min-content min-content;
+    column-gap: 20px;
+  }
+
+  .title_what_decrease {
+    grid-column: 1 / 1;
+    grid-row: 1/1;
+  }
+  .container_what_decrease {
+    display: flex;
+    gap: 20px;
+  }
 }
