@@ -1,7 +1,5 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 .page {
-  /* padding-inline: var(--page-inline-padding);
-  padding-block: var(--page-block-padding); */
   background-color: var(--bg-reserve-color);
   background-image: var(--bg-image-dark, url(../images/cover-image.png));
   background-repeat: no-repeat;
@@ -18,7 +16,6 @@
   height: max(100vh, 668px);
   padding-inline: var(--page-inline-padding);
   padding-block: var(--page-block-padding);
-  /* block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding)); */
 }
 
 /* ------------------ REC с точкой и уголком------------------------*/
@@ -367,7 +364,6 @@ section.section_motion_images {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr min-content 1fr;
     height: max(100vh, 668px);
-    /* block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding)); */
   }
 
   .header__theme-menu {
