@@ -1,7 +1,9 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-.page { 
+.page {
+  padding-inline: var(--page-inline-padding);
+  padding-block: var(--page-block-padding);
   background-color: var(--bg-reserve-color);
-  background-image: var(--bg-image-dark);
+  background-image: var(--bg-image-dark, url(../images/cover-image.png));
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -10,10 +12,10 @@
 
 .header {
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr min-content 1fr;
-  height: max(100vh, 375px);
-  padding: 10px;
+  block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding));
 }
 
 /* ------------------ REC с точкой и уголком------------------------*/
@@ -25,8 +27,8 @@
 .decorated-zone::before {
   content: "";
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 1px;
+  right: 1px;
   width: 25px;
   height: 25px;
   border-top: 1px solid  var( --corner-up-color,#ff0070);
@@ -36,8 +38,8 @@
 .decorated-zone::after {
   content: "";
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 1px;
+  left: 1px;
   width: 25px;
   height: 25px;
   border-bottom: 1px solid  var(--corner-down-color,#ff0070);
@@ -57,8 +59,8 @@
   line-height: 139%;
   text-align: center;
   text-transform: uppercase;
-  inset-block-start: 10px;
-  inset-inline-end: 10px;
+  right: 0;
+  top: 0;
 }
 
 .header_rec::after {
@@ -77,7 +79,8 @@
 
 .header__theme-menu {
   justify-self: end;
-  padding-block-start: 63px;
+  padding-inline-end: var(--menu-inline-padding);
+  padding-block-start: var(--menu-block-padding);
   color: var(--nav-menu-color,#ff0070);
   font-family: var(--font-family, sans-serif);
   font-weight: 400;
@@ -120,13 +123,14 @@
 /* ------------------ Главный заголовок------------------------*/
 
 .title_no_focus {
-  align-self: center;
+  align-self: left;
   color: var(--title-color,#db00ff);
   font-family: var(--font-family-bold, sans-serif);
   font-weight: 700;
-  font-size:  clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-size:  var(--font-size);
   line-height: 83%;
   text-shadow: 4px 4px 0 var(--title-shadow-color,#ff0070);
+
 }
 
 .descriptions_no_focus {
@@ -148,9 +152,8 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 50px;
-  padding-inline-start: 10px;
-  padding-inline-end: 10px;
+  gap: var(--main-content-gap);
+  padding-block-start: var(--main-padding);
 }
 
 .title {
@@ -196,7 +199,6 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: min-content 1fr;
-  padding-block-start: 40px;
 }
 
 /* ------------------ Ссылка и состояния ------------------------*/
@@ -274,13 +276,19 @@
   margin: 0 0 10px 0;
 }
 /* ------------------ Список картинок------------------------*/
+section.section_motion_images {
+  display: flex;
+  flex-direction: column;
+}
+
 .container_motion_images {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: var(--picture-gap);
 }
 
 .gallery_picture {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -290,12 +298,12 @@
 /* ------------------ Футер------------------------*/
 
 .footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  justify-items: center;
   align-items: center;
-  height: max(100vh, 375px);
-  margin-block-start: 40px;
+  block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding));
+  margin-block-start: 50px;
+  padding: 0;
 }
 
 .footer_title_focus {
@@ -311,13 +319,48 @@
 /* --------------------------------------------------------------*/
 /* ------------------ Медиа запросы------------------------*/
 
+@media (width < 767px) {
+  :root {
+    --page-inline-padding: 10px;
+    --page-block-padding: 10px;
+    --menu-inline-padding: 0px;
+    --menu-block-padding: 0px;
+    --main-padding: 50px;
+    --main-content-gap: 50px;
+    --picture-gap: 10px;
+    --font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
+}
+
+@media (width >= 768px) {
+  :root {
+    --page-inline-padding: 20px;
+    --page-block-padding: 20px;
+    --main-padding: 60px;
+    --main-content-gap: 80px;
+    --picture-gap: 20px;
+    --font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
+}
+
 @media (width >= 768px) {
   
+  .page {
+    padding-block: 20px;
+    padding-inline: 20px;
+  }
+
   .header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr min-content 1fr;
+    padding: 0px;
+    block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding));
+  }
+
+  .decorated-zone {
     padding: 0;
+    margin: 0;
   }
 
   .header__theme-menu {
@@ -330,6 +373,7 @@
     grid-column: 1 / -1;
     grid-row: 2 /3;
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    margin: -20px;
   }
 
   .descriptions_no_focus {
@@ -337,18 +381,24 @@
     grid-row: 3;
   }
   
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
 
 /* ------------------ Почему сосредоточиться так сложно------------------------*/
-
+  
   .section_why_hard {
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
   }
 
   .title_why_hard {
+    padding-block-start: 20px;
     grid-column: 1 / 2;
   }
   .container_why_hard {
+    margin-inline-start: 6px;
     grid-column: 2 / -1;
   }
 
@@ -358,14 +408,17 @@
     grid-template-rows: min-content 1fr;
     column-gap: 20px;
   }
-
   .title_what_decrease {
     grid-column: 1 / 1;
-    grid-row: 1/1;
   }
-  .container_what_decrease {
-    grid-column: 1 / 4;
-    grid-row: 2/4;
+  .container_what_decrease_miltitask {
+    grid-column: 2/ 3;
+  }
+  .container_what_decrease_eat {
+    grid-column: 2/ 3;
+  }
+  .container_what_decrease_gadjet {
+    grid-column: 2/ 3;
   }
   /* ------------------ Как концентрироваться лучше, чем золотая рыбка (то есть дольше трёх секунд)------------------------*/
 
@@ -380,17 +433,18 @@
   }
   .container_how_goldfish {
     grid-column: 2 / -1;
+    margin-inline-start: 6px;
   }
-
   .title_content_container {
     margin-block-start: 0;
   }
+  
   /* ------------------ А можно в картинках?------------------------*/
   .container_motion_images {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-flow: dense;
-    gap: 20px;
+    padding-block-start: 9px;
   }
 /* ------------------ Закат------------------------*/
   .gallery_picture_image:nth-child(1) {
@@ -415,6 +469,12 @@
     grid-column: 2 / 4;
     grid-row: 3;
   }
+
+  .footer {
+    margin-block-start: 80px;
+    block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding));
+}
+
   .footer_title_focus {
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
@@ -426,7 +486,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr min-content 1fr;
-    padding-block-start: 20px;
   }
 
   .header__theme-menu {
@@ -446,29 +505,54 @@
     grid-column: 1 / -1;
     grid-row: 2 /3;
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    padding: 0;
+    margin: -20px;
   }
 
   .descriptions_no_focus {
     grid-column: 2 / 3;
     grid-row: 3;
-    margin-inline-end: 20px;
   }
+
+/* ------------------ Почему сосредоточиться так сложно------------------------*/
   
+.section_why_hard {
+  column-gap: 5px;
+}
+
+.title_why_hard {
+  grid-column: 1 / 2;
+}
+.container_why_hard {
+  grid-column: 2 / -1;
+}
+
  /* ------------------ Что снижает концентрацию внимания?------------------------*/
   .section_what_decrease {
-    grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     column-gap: 20px;
   }
-
-  .title_what_decrease {
-    grid-column: 1 / 1;
-    grid-row: 1/1;
+ .title_what_decrease {
+    grid-column: 1/2;
+    grid-row: 1;
   }
-  .container_what_decrease {
-    display: flex;
-    gap: 20px;
+  .container_what_decrease_miltitask {
+    grid-column: 1/2;
+    grid-row: 2;
+  }
+  .container_what_decrease_eat {
+    grid-column: 2/3;
+    grid-row: 2;
+  }
+  .container_what_decrease_gadjet {
+    grid-column: 3/4;
+    grid-row: 2;
   }
 
+  .container_how_goldfish {
+    margin-inline-start: 0px;
+  }
 
   .footer_title_focus {
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
