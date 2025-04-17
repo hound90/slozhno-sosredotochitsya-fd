@@ -1,7 +1,7 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 .page {
-  padding-inline: var(--page-inline-padding);
-  padding-block: var(--page-block-padding);
+  /* padding-inline: var(--page-inline-padding);
+  padding-block: var(--page-block-padding); */
   background-color: var(--bg-reserve-color);
   background-image: var(--bg-image-dark, url(../images/cover-image.png));
   background-repeat: no-repeat;
@@ -15,7 +15,10 @@
   align-items: center;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr min-content 1fr;
-  block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding));
+  height: max(100vh, 668px);
+  padding-inline: var(--page-inline-padding);
+  padding-block: var(--page-block-padding);
+  /* block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding)); */
 }
 
 /* ------------------ REC с точкой и уголком------------------------*/
@@ -27,8 +30,8 @@
 .decorated-zone::before {
   content: "";
   position: absolute;
-  top: 1px;
-  right: 1px;
+  top: var(--decor-up-top-absolute);
+  right: var(--decor-up-right-absolute);
   width: 25px;
   height: 25px;
   border-top: 1px solid  var( --corner-up-color,#ff0070);
@@ -38,8 +41,8 @@
 .decorated-zone::after {
   content: "";
   position: absolute;
-  bottom: 1px;
-  left: 1px;
+  bottom: var(--decor-down-bottom-absolute);
+  left: var(--decor-down-left-absolute);
   width: 25px;
   height: 25px;
   border-bottom: 1px solid  var(--corner-down-color,#ff0070);
@@ -59,8 +62,8 @@
   line-height: 139%;
   text-align: center;
   text-transform: uppercase;
-  right: 0;
-  top: 0;
+  right: var(--rec-right-absolute);
+  top: var(--rec-top-absolute);
 }
 
 .header_rec::after {
@@ -154,6 +157,8 @@
   flex-direction: column;
   gap: var(--main-content-gap);
   padding-block-start: var(--main-padding);
+  padding-inline: var(--page-inline-padding);
+  padding-block-end: var(--page-block-padding);
 }
 
 .title {
@@ -301,8 +306,8 @@ section.section_motion_images {
   display: grid;
   justify-items: center;
   align-items: center;
-  block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding));
-  margin-block-start: 50px;
+  height: max(100vh, 668px);
+  margin-block-start: 30px;
   padding: 0;
 }
 
@@ -321,11 +326,17 @@ section.section_motion_images {
 
 @media (width < 767px) {
   :root {
+    --decor-up-top-absolute: 10px;
+    --decor-up-right-absolute: 10px;
+    --decor-down-bottom-absolute: 10px;
+    --decor-down-left-absolute: 10px;
+    --rec-right-absolute: 10px;
+    --rec-top-absolute: 10px;
     --page-inline-padding: 10px;
     --page-block-padding: 10px;
     --menu-inline-padding: 0px;
     --menu-block-padding: 0px;
-    --main-padding: 50px;
+    --main-padding: 40px;
     --main-content-gap: 50px;
     --picture-gap: 10px;
     --font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
@@ -334,12 +345,18 @@ section.section_motion_images {
 
 @media (width >= 768px) {
   :root {
+    --decor-up-top-absolute:  20px;
+    --decor-up-right-absolute:  20px;
+    --decor-down-bottom-absolute:  20px;
+    --decor-down-left-absolute:  20px;
+    --rec-right-absolute:  20px;
+    --rec-top-absolute:  20px;
     --page-inline-padding: 20px;
     --page-block-padding: 20px;
-    --main-padding: 60px;
+    --main-padding: 40px;
     --main-content-gap: 80px;
     --picture-gap: 20px;
-    --font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+    --font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
 }
 
@@ -349,13 +366,8 @@ section.section_motion_images {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr min-content 1fr;
-    padding: 0px;
-    block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding));
-  }
-
-  .decorated-zone {
-    padding: 0;
-    margin: 0;
+    height: max(100vh, 668px);
+    /* block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding)); */
   }
 
   .header__theme-menu {
@@ -471,8 +483,8 @@ section.section_motion_images {
   }
 
   .footer {
-    margin-block-start: 80px;
-    block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding));
+    margin-block-start: 40px;
+    height: max(100vh, 668px);
 }
 
   .footer_title_focus {
@@ -481,12 +493,12 @@ section.section_motion_images {
 }
 
 @media (width >= 1024px) {
-  
+   
   .header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr min-content 1fr;
-    block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding));
+    height: max(100vh, 668px);
   }
 
   .header__theme-menu {
@@ -496,12 +508,12 @@ section.section_motion_images {
     align-self: start;
     padding: 0;
   }
-  
+  /* ------------------ Меню навигации------------------------*/
   .header__theme-menu-list {
     display: flex;
     flex-direction: row;
   }
-
+/* ------------------ Заголовок и описание------------------------*/
   .title_no_focus {
     grid-column: 1 / -1;
     grid-row: 2 /3;
@@ -551,13 +563,13 @@ section.section_motion_images {
     grid-column: 3/4;
     grid-row: 2;
   }
-
+ /* ------------------ Как концентрироваться лучше, чем золотая рыбка (то есть дольше трёх секунд)------------------------*/
   .container_how_goldfish {
     margin-inline-start: 0px;
   }
-
+ /* ------------------ Футер------------------------*/
   .footer {
-    block-size: calc(100vh - var(--page-block-padding) - var(--page-inline-padding));
+    height: max(100vh, 668px);
   }
   .footer_title_focus {
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
