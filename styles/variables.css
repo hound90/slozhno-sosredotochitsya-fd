@@ -63,7 +63,8 @@
     --page-block-padding: 10px;
     --menu-inline-padding: 0px;
     --menu-block-padding: 0px;
-    --main-padding: 40px;
+    --main-block-padding: 40px;
+    --main-inline-padding: 10px;
     --main-content-gap: 50px;
     --picture-gap: 10px;
     --font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
@@ -78,8 +79,13 @@
     --decor-down-left-absolute:  20px;
     --rec-right-absolute:  20px;
     --rec-top-absolute:  20px;
+
     --page-inline-padding: 20px;
     --page-block-padding: 20px;
+    --menu-inline-padding: 0px;
+    --menu-block-padding: 0px;
+    --main-block-padding: 60px;
+    --main-inline-padding: 20px;
     --main-content-gap: 80px;
     --picture-gap: 20px;
     --font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);

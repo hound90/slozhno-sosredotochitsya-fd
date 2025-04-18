@@ -15,7 +15,7 @@
   grid-template-rows: 1fr min-content 1fr;
   height: max(100vh, 668px);
   padding-inline: var(--page-inline-padding);
-  padding-block: var(--page-block-padding);
+  padding-block-start: var(--page-block-padding);
 }
 
 /* ------------------ REC с точкой и уголком------------------------*/
@@ -109,11 +109,10 @@
 }
 
 .header__theme-menu-button:focus {
-  
   outline: none;
 }
 
-.header__theme-menu-button:focus-visible{
+.header__theme-menu-button:focus-visible {
   border-bottom: 1px solid var(--nav-menu-activ-color,#ff0070);
   outline: none;
 }
@@ -135,7 +134,7 @@
   font-size:  var(--font-size);
   line-height: 83%;
   text-shadow: 4px 4px 0 var(--title-shadow-color,#ff0070);
-
+  margin-block-end: 10px;
 }
 
 .descriptions_no_focus {
@@ -145,6 +144,7 @@
   font-size: clamp(1.125rem, 1.125rem + 0vw, 1.125rem);
   line-height: 130%;
   white-space: pre-line;
+  margin-block-end: 20px;
 }
 
 .descriptions_title-decor {
@@ -158,8 +158,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--main-content-gap);
-  padding-block: var(--main-padding);
-  padding-inline: var(--page-inline-padding);
+  padding-block: var(--main-block-padding);
+  padding-inline: var(--main-inline-padding);
 }
 
 .content_section {
@@ -176,8 +176,23 @@
 }
 
 .content_list {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
+}
+.content_why{
+  display: grid;
+  gap: 20px;
+}
+
+.content_what_decrease {
+  display: grid;
+  gap: 20px;
+}
+
+.section_advices {
+  display: grid;
+  gap: 20px;
 }
 
 .content_title {
@@ -198,10 +213,10 @@
   background-color:  var(--bg-content-color,#ff0070);
 }
 
-.section_advices {
-  display: grid;
-  gap: 20px;
+.content_why:has(.content_list:nth-child(1)) {
+  padding-block-start: 0px;
 }
+
 
 
 .descriptions {
@@ -230,14 +245,11 @@
 .descriptions_link:focus-visible {
   outline: 1px solid var(--link-outline-color);
 }
-
-
 /* ------------------ Конец ссылки------------------------*/
-
-
 /* ------------------ А можно в картинках?------------------------*/
 
 .title_motion_images {
+  margin-block-start: 0px;
   margin-block-end: 10px;
 }
 
@@ -285,10 +297,10 @@
   .header {
     grid-template-columns: 1fr 1fr;
     height: max(100vh, 668px);
-    margin-block-end: 18px;
   }
 
   .header__theme-menu {
+    padding-block-end: 25px;
     grid-column: 1 / 3;
     grid-row: 1;
   }
@@ -298,12 +310,12 @@
     grid-row: 2 /3;
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
     margin: -20px;
+    padding-block-end: 15px;
   }
 
   .descriptions_no_focus {
     grid-column: 2 / 3;
     grid-row: 3;
-    margin-block-start: 20px;
   }
     
   .content_section {
@@ -312,21 +324,17 @@
 /* ------------------ Почему сосредоточиться так сложно------------------------*/
   
   .content_why {
-    display: grid;
-    gap: 20px;
     grid-column: 2 / 4;
   }
   
-
-  /* ------------------ Что снижает концентрацию внимания?------------------------*/
-  .content_what_decrease {
-    display: grid;
-    gap: 20px;
-    grid-column: 1 / 4;
+  .content_why .content_list {
+    margin-inline-start: 5px;
   }
 
-.content_what_decrease {
-    padding: 0px;
+  /* ------------------ Что снижает концентрацию внимания?------------------------*/
+
+  .content_what_decrease {
+    grid-column: 1 / 4;
   }
   
 /* ------------------ Как концентрироваться лучше, чем золотая рыбка (то есть дольше трёх секунд)------------------------*/
@@ -367,7 +375,6 @@
   }
 
   .footer {
-    margin-block-start: 20px;
     height: max(100vh, 668px);
 }
 
@@ -383,6 +390,7 @@
   }
 /* ------------------ Меню навигации------------------------*/
   .header__theme-menu {
+
     justify-self: center;
     align-self: self-start;
   }
@@ -392,13 +400,16 @@
   }
 
 /* ------------------ Почему сосредоточиться так сложно------------------------*/
-.content_why:has(.content_list) {
+
+.content_why .content_list {
   margin-inline-start: 0px;
 }
-
  /* ------------------ Что снижает концентрацию внимания?------------------------*/
  .content_what_decrease {
   grid-template-columns: 1fr 1fr 1fr;
+}
+.section_advices{
+  margin-inline-start: 0px;
 }
 
  /* ------------------ Футер------------------------*/
