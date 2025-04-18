@@ -5,11 +5,9 @@
 :root {
   /* ------------------ Контрольная панель------------------------*/
 
-
   /* ------------------ Управление текстом------------------------*/
   /* ------------------ Основной шрифт------------------------*/
   --font-family: 'IBM Plex mono';
-  --font-family-bold: 'IBM Plex mono-bold';
 
   /* ------------------ Управление цветом------------------------*/
   /* ------------------ Управление цветом текста основного заголовка и тени------------------------*/
@@ -44,4 +42,46 @@
   /* ------------------ Управление тенью ссылок и обводки контента------------------------*/
   --bg-link-content-color: #ff0070;
   --link-outline-color: #f1b2ce;
+}
+
+
+
+
+
+
+
+
+@media (width < 767px) {
+  :root {
+    --decor-up-top-absolute: 10px;
+    --decor-up-right-absolute: 10px;
+    --decor-down-bottom-absolute: 10px;
+    --decor-down-left-absolute: 10px;
+    --rec-right-absolute: 10px;
+    --rec-top-absolute: 10px;
+    --page-inline-padding: 10px;
+    --page-block-padding: 10px;
+    --menu-inline-padding: 0px;
+    --menu-block-padding: 0px;
+    --main-padding: 40px;
+    --main-content-gap: 50px;
+    --picture-gap: 10px;
+    --font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
+}
+
+@media (width >= 768px) {
+  :root {
+    --decor-up-top-absolute:  20px;
+    --decor-up-right-absolute:  20px;
+    --decor-down-bottom-absolute:  20px;
+    --decor-down-left-absolute:  20px;
+    --rec-right-absolute:  20px;
+    --rec-top-absolute:  20px;
+    --page-inline-padding: 20px;
+    --page-block-padding: 20px;
+    --main-content-gap: 80px;
+    --picture-gap: 20px;
+    --font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
 }
