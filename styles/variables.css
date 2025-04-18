@@ -44,13 +44,6 @@
   --link-outline-color: #f1b2ce;
 }
 
-
-
-
-
-
-
-
 @media (width < 767px) {
   :root {
     --decor-up-top-absolute: 10px;
@@ -61,8 +54,6 @@
     --rec-top-absolute: 10px;
     --page-inline-padding: 10px;
     --page-block-padding: 10px;
-    --menu-inline-padding: 0px;
-    --menu-block-padding: 0px;
     --main-block-padding: 40px;
     --main-inline-padding: 10px;
     --main-content-gap: 50px;
@@ -79,11 +70,8 @@
     --decor-down-left-absolute:  20px;
     --rec-right-absolute:  20px;
     --rec-top-absolute:  20px;
-
     --page-inline-padding: 20px;
     --page-block-padding: 20px;
-    --menu-inline-padding: 0px;
-    --menu-block-padding: 0px;
     --main-block-padding: 60px;
     --main-inline-padding: 20px;
     --main-content-gap: 80px;

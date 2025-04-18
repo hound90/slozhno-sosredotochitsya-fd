@@ -79,8 +79,6 @@
 
 .header__theme-menu {
   justify-self: end;
-  padding-inline-end: var(--menu-inline-padding);
-  padding-block-start: var(--menu-block-padding);
   color: var(--nav-menu-color,#ff0070);
   font-family: var(--font-family, sans-serif);
   font-weight: 400;
@@ -116,7 +114,6 @@
   border-bottom: 1px solid var(--nav-menu-activ-color,#ff0070);
   outline: none;
 }
-
 
 /* ------------------ Выбранный стиль + активная кнопка------------------------*/
 
@@ -216,8 +213,6 @@
 .content_why:has(.content_list:nth-child(1)) {
   padding-block-start: 0px;
 }
-
-
 
 .descriptions {
   color: var(--description-content-color, #f1b2ce);
